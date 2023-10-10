@@ -1,0 +1,38 @@
+import 'dart:convert';
+
+class AddCartModel {
+  int? status;
+  bool? data;
+  int? totalCarts;
+  String? message;
+  String? userMsg;
+
+  AddCartModel({
+    this.status,
+    this.data,
+    this.totalCarts,
+    this.message,
+    this.userMsg,
+  });
+
+  factory AddCartModel.fromRawJson(String str) =>
+      AddCartModel.fromJson(json.decode(str));
+
+  String toRawJson() => json.encode(toJson());
+
+  factory AddCartModel.fromJson(Map<String, dynamic> json) => AddCartModel(
+        status: json["status"],
+        data: json["data"],
+        totalCarts: json["total_carts"],
+        message: json["message"],
+        userMsg: json["user_msg"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "status": status,
+        "data": data,
+        "total_carts": totalCarts,
+        "message": message,
+        "user_msg": userMsg,
+      };
+}
